@@ -3,13 +3,13 @@ import { ServicioReservas } from "../services/ServicioReserva.js";
 export class ControladorReservas {
   constructor() {}
 
-  reservarHabitacion(request, response) {
+  async reservarHabitacion(request, response) {
     let servicioReserva = new ServicioReservas();
 
     try {
       response.status(200).json({
         mensaje: "Exito en la reserva",
-        datos: servicioReserva.buscarTodas(),
+        datos: await servicioReserva.buscarTodas(),
       });
     } catch (error) {
       response(400).json({
@@ -19,7 +19,7 @@ export class ControladorReservas {
     }
   }
 
-  reservarHabitacionPorId(request, response) {
+  async reservarHabitacionPorId(request, response) {
     let identificador = request.params.id;
 
     let servicioReserva = new ServicioReservas();
@@ -27,7 +27,7 @@ export class ControladorReservas {
     try {
       response.status(200).json({
         mensaje: "exito en la reserva " + identificador,
-        datos: servicioReserva.buscarPorId(),
+        datos: await servicioReserva.buscarPorId(),
       });
     } catch (error) {
       response(400).json({
@@ -37,13 +37,13 @@ export class ControladorReservas {
     }
   }
 
-  agregarReserva(request, response) {
+  async agregarReserva(request, response) {
     let cuerpo = request.body;
 
     let servicioReserva = new ServicioReservas();
 
     try {
-      servicioReserva.agregar(cuerpo);
+      await servicioReserva.agregar(cuerpo);
       response.status(200).json({
         mensaje: "Exito reservando la habitacion",
         datos: null,
@@ -56,7 +56,7 @@ export class ControladorReservas {
     }
   }
 
-  editarReserva(request, response) {
+  async editarReserva(request, response) {
     let id = request.params.id;
 
     let datos = request.body;
@@ -64,7 +64,7 @@ export class ControladorReservas {
     let servicioReserva = new ServicioReservas();
 
     try {
-      servicioReserva.actualizar(id, datos);
+      await servicioReserva.actualizar(id, datos);
       response.status(200).json({
         mensaje: "exito editando la reserva " + id,
         datos: null,
@@ -74,16 +74,24 @@ export class ControladorReservas {
     }
   }
 
-  eliminarReserva(request, response) {
+  async eliminarReserva(request, response) {
+
+    let id = request.params.id
+
+    let servicioReserva = new ServicioReservas();
+
     try {
-      response.status(200).json({});
+      await servicioReserva.eliminarReserva(id)
+      response.status(200).json({
+        mensaje: "Exito editando la reserva " + id,
+        datos: null
+      });
     } catch (error) {
       //FALLO RESOLVIENDO LA PETICION
-      response(400).json({});
+      response(400).json({
+        mensaje: "fallo resolviendo la peticion "+ error,
+        datos: null
+      });
     }
   }
-
-
-
-
 }

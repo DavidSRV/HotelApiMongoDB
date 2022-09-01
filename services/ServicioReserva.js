@@ -19,6 +19,10 @@ export class ServicioReservas {
   }
 
   async actualizar(id, datos) {
-    return modeloReserva.findByIdAndUpdate(id, datos);
+    return await modeloReserva.findByIdAndUpdate(id, datos);
+  }
+
+  async eliminar(id){
+    return await modeloReserva.findByIdAndDelete(id);
   }
 }

@@ -1,5 +1,8 @@
 import { modeloHabitacion } from "../models/modeloDatosHabitacion.js";
 
+
+//Nos permiten comunicar con la BD y hacer el consumo 
+
 export class ServicioHabitacion {
   constructor() {}
 
@@ -19,6 +22,10 @@ export class ServicioHabitacion {
   }
 
   async actualizar(id, datos) {
-    return modeloHabitacion.findByIdAndUpdate(id, datos);
+    return await modeloHabitacion.findByIdAndUpdate(id, datos);
+  }
+
+  async eliminar(id){
+    return await modeloHabitacion.findByIdAndDelete(id);
   }
 }
