@@ -11,7 +11,7 @@ export class ControladorHabitacion {
     //Intento resolver la PETICION
     try {
       response.status(200).json({
-        mensaje: "PTO EL QUE LO LEA",
+        mensaje: "Exito en la consulta",
         datos: await servicioHabitacion.buscarTodas(),
       });
     } catch (error) {

@@ -19,7 +19,7 @@ rutas.get(
   controladorHabitacion.buscarHabitaciones
 );
 rutas.get(
-  "/viajescomfama/v1/habitacion/:id",
+    "/viajescomfama/v1/habitacion/:id",
   controladorHabitacion.buscarHabitacionPorId
 );
 rutas.post(
