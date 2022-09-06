@@ -31,6 +31,11 @@ rutas.put(
   controladorHabitacion.editarHabitacion
 );
 
+rutas.delete(
+  "/viajescomfama/v1/habitacion/:id",
+  controladorHabitacion.eliminarHabitacion
+);
+
 //ENDPOINTS PARA LOS SERVICIOS ASOCIADOS A LAS RESERVAS
 
 
@@ -50,3 +55,8 @@ rutas.get(
     "/viajescomfama/v1/reserva/:id",
     controladorReserva.editarReserva
   );
+
+  rutas.delete(
+    "/viajescomfama/v1/reserva/:id",
+    controladorReserva.eliminarReserva
+  )
