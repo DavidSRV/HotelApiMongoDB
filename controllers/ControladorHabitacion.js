@@ -98,14 +98,14 @@ export class ControladorHabitacion {
     let servicioHabitacion = new ServicioHabitacion();
 
     try {
-      await servicioHabitacion.eliminarHabitacion(id)
+      await servicioHabitacion.eliminar(id)
       response.status(200).json({
         mensaje: "Exito editando la reserva " + id,
         datos: null
       });
     } catch (error) {
       //FALLO RESOLVIENDO LA PETICION
-      response(400).json({
+      response.status(400).json({
         mensaje: "fallo resolviendo la peticion "+ error,
         datos: null
       });
