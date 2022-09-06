@@ -100,7 +100,7 @@ export class ControladorHabitacion {
     try {
       await servicioHabitacion.eliminar(id)
       response.status(200).json({
-        mensaje: "Exito editando la reserva " + id,
+        mensaje: "Exito eliminando la reserva " + id,
         datos: null
       });
     } catch (error) {

@@ -12,7 +12,7 @@ export class ControladorReservas {
         datos: await servicioReserva.buscarTodas(),
       });
     } catch (error) {
-      response(400).json({
+      response.status(400).json({
         mensaje: "fallo en la reserva " + error,
         datos: null,
       });
@@ -27,10 +27,10 @@ export class ControladorReservas {
     try {
       response.status(200).json({
         mensaje: "exito en la reserva " + identificador,
-        datos: await servicioReserva.buscarPorId(),
+        datos: await servicioReserva.buscarPorId(identificador),
       });
     } catch (error) {
-      response(400).json({
+      response.status(400).json({
         mensaje: "fallo en la reserva " + error,
         datos: null,
       });
@@ -49,7 +49,7 @@ export class ControladorReservas {
         datos: null,
       });
     } catch (error) {
-      response(400).json({
+      response.status(400).json({
         mensaje: "fallo en la reserva " + error,
         datos: null,
       });
@@ -81,14 +81,14 @@ export class ControladorReservas {
     let servicioReserva = new ServicioReservas();
 
     try {
-      await servicioReserva.eliminarReserva(id)
+      await servicioReserva.eliminar(id)
       response.status(200).json({
         mensaje: "Exito editando la reserva " + id,
         datos: null
       });
     } catch (error) {
       //FALLO RESOLVIENDO LA PETICION
-      response(400).json({
+      response.status(400).json({
         mensaje: "fallo resolviendo la peticion "+ error,
         datos: null
       });
