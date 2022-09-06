@@ -34,7 +34,7 @@ export class ControladorHabitacion {
     try {
       response.status(200).json({
         mensaje: "exito en la consulta " + identificador,
-        datos: await servicioHabitacion.buscarPorId(),
+        datos: await servicioHabitacion.buscarPorId(identificador),
       });
     } catch (error) {
       //FALLO RESOLVIENDO LA PETICION
